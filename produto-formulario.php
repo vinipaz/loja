@@ -2,7 +2,6 @@
 
 		<h1>Formulário de produto</h1>
 
-<!-- A action do form é para mandar para a página adiciona-produto-->
 	<form action="adiciona-produto.php">
 		<table class="table">
 		<tr>
