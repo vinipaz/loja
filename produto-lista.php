@@ -1,16 +1,18 @@
-<?php  include("cabecalho.php");
+<?php
+//Inclui o cabecalho
+include("cabecalho.php");
+//Conecta ao banco de dados
 include("conecta.php");
+//Funções da tabela produtos
 include("banco-produto.php"); ?>
 
+<!--Verificação para remover-->
 <?php
 	if(array_key_exists("removido", $_GET) && $_GET["removido"] == "true") {
 ?>
 		<p class="alert-success">Produto apagado com sucesso!</p>	
-<?php	
-	}
+<?php }
 ?>
-
-
 
 <table class="table table-striped table-bordered">
 <?php
