@@ -29,7 +29,7 @@ $categorias = listaCategorias($conexao);
 		</tr>
 		<tr>
 			<td></td>
-			<td><input type="checkbox" name="usado" value="true">Usado
+			<td><input type="checkbox" name="usado" checked="checked" value="true">Usado
 		</tr>
 		<tr>
 			<td>Categoria</td>

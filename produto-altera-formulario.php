@@ -5,45 +5,46 @@ include("cabecalho.php");
 include("conecta.php");
 //Funções da tabela de categorias
 include("banco-categoria.php");
+include("banco-produto.php");
 
+$id = $_GET["id"];
+$produto = buscaProduto($conexao, $id);
 $categorias = listaCategorias($conexao);
+$usado = $produto['usado'] ? "checked='checked'" : "";
 
 ?>
 
-		<h1>Formulário de produto</h1>
+		<h1>Alterando produto</h1>
 
 	<!--Adiciona oproduto pelo metodo POST-->
-	<form action="adiciona-produto.php" method="post">
+	<form action="altera-produto.php" method="post">
+		<input type="hidden" name="id" value="<?=$produto['id']?>">
 		<table class="table">
 		<tr>
 			<td>Nome:</td>
-			<td><input class="form-control" type="text" name="nome"><br /></td>
+			<td><input class="form-control" type="text" name="nome" value="<?=$produto['nome']?>"><br /></td>
 		</tr>
 		<tr>
 			<td>Preço:</td>
-			<td><input class="form-control" type="number" name="preco"><br /></td>
+			<td><input class="form-control" type="number" name="preco" value="<?=$produto['preco']?>"><br /></td>
 		</tr>
 		<tr>
 			<td>Descricao</td>
-			<td><textarea class="form-control" name="descricao"></textarea></td>
+			<td><textarea class="form-control" name="descricao" value="<?=$produto['descricao']?>"></textarea></td>
 		</tr>
 		<tr>
 			<td></td>
-			<td><input type="checkbox" name="usado" value="true">Usado
+			<td><input type="checkbox" name="usado" <?=$usado?> value="true">Usado
 		</tr>
 		<tr>
 			<td>Categoria</td>
 			<td>
-				<!--Lista cada categoria cadastrada no banco como radio button-->
-				<?php // foreach($categorias as $categoria) : ?>
-					 <!-- <input type="radio" name="categoria_id"
-						value="<?=$categoria['id']?>">
-						<?=$categoria['nome']?><br/> --> 
-				<?php // endforeach ?>
-				<!--Selecionar no combobox-->
 				<select name="categoria_id" class="form-control">
-					<?php foreach($categorias as $categoria) : ?>
-						<option value="<?=$categoria['id']?>">
+					<?php foreach($categorias as $categoria) :
+						$essaEhACategoria = $produto['categoria_id'] == $categoria['id'];
+						$selecao = $essaEhACategoria ? "selected='selected'" : "";
+					?>
+						<option value="<?=$categoria['id']?>" <?=$selecao?>>
 							<?=$categoria['nome']?>
 						</option>
 					<?php endforeach ?>
@@ -51,7 +52,7 @@ $categorias = listaCategorias($conexao);
 			</td>
 		</tr>
 		<tr>
-			<td><input class="btn btn-primary" type="submit" name="Cadastrar"></td>
+			<td><input class="btn btn-primary" type="submit" name="Alterar"></td>
 		</tr>	
 
 	</form>
