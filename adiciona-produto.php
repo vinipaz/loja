@@ -6,17 +6,20 @@ include("conecta.php");
 //Funções da tabela produto
 include("banco-produto.php");
 include("class/Produto.php");
+include("class/Categoria.php");
 ?>
 
 <!--Variaveis no metodo POST-->
 <?php
 
 $produto = new Produto;
+$categoria = new Categoria;
 
+$categoria->id = $_POST['categoria_id'];
 $produto->nome = $_POST["nome"];
 $produto->preco = $_POST["preco"];
 $produto->descricao = $_POST["descricao"];
-$produto->categoria_id = $_POST["categoria_id"];
+$produto->categoria = $categoria;
 //Checkbox precisam de verificação, pois se enão for selecionado não é enviado e quebra o código
 if(array_key_exists('usado', $_POST)) {
 	$usado = "true";

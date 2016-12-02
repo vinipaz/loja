@@ -23,7 +23,7 @@
 				<ul class="nav navbar-nav">
 					<!--Opções no Menu-->
 					<li><a href="produto-formulario.php">Adiciona Produto</a></li>
-					<li><a href="cadastro-usuario.php">Usuário</a></li>
+					<!-- <li><a href="cadastro-usuario.php">Usuário</a></li> -->
 					<li><a href="produto-lista.php">Produtos</a></li>
 					<li><a href="sobre.php">Sobre</a></li>
 				</ul>
