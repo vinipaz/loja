@@ -17,7 +17,7 @@ $categoria = new Categoria;
 
 $categoria->id = $_POST['categoria_id'];
 $produto->nome = $_POST["nome"];
-$produto->preco = $_POST["preco"];
+$produto->getPreco($_POST["preco"]);
 $produto->descricao = $_POST["descricao"];
 $produto->categoria = $categoria;
 //Checkbox precisam de verificação, pois se enão for selecionado não é enviado e quebra o código
